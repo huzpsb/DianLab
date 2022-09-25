@@ -1,12 +1,10 @@
 import torch
 import torch.nn as nn
-
 from torch.utils import data
 from tqdm import tqdm
 
-from tvid import TvidDataset
 from detector import Detector
-from utils import compute_iou
+from tvid import TvidDataset
 
 lr = 5e-3
 batch = 32

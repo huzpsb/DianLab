@@ -1,9 +1,9 @@
 import random
+
 import torch
+from PIL import Image
 from torchvision import transforms
 from torchvision.transforms import functional as F
-
-from PIL import Image
 
 
 def pad_if_smaller(img, size, fill=0):

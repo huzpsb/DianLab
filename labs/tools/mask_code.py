@@ -1,6 +1,6 @@
+import argparse
 import os
 import re
-import argparse
 
 
 def mask_code(path):

@@ -1,17 +1,16 @@
 import gzip
 import os
 import shutil
-
-import numpy as np
-import matplotlib.pyplot as plt
-from tqdm import tqdm
-from knn import Knn
 from urllib.request import urlretrieve
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+from knn import Knn
 
 
 def load_mnist(root='./mnist'):
-    # TODO Load the MNIST dataset
-
+    # Load the MNIST dataset
     # 2. Unzip the MNIST dataset into the
     #    mnist directory.
     if not os.path.exists(root + "\\t10k-labels-idx1-ubyte"):
@@ -51,11 +50,11 @@ def load_mnist(root='./mnist'):
         .reshape(train_length, 784) \
         .reshape(train_length, 28, 28, 1)
     test_labels = np.fromfile(root + "\\t10k-labels-idx1-ubyte", dtype=np.uint8, offset=8)
-    test_length = len(train_labels)
+    test_length = len(test_labels)
     test_data = np.fromfile(root + "\\t10k-images-idx3-ubyte", dtype=np.uint8, offset=16) \
-        .reshape(train_length, 784) \
-        .reshape(train_length, 28, 28, 1)
-    return test_data, test_labels, test_data, test_labels
+        .reshape(test_length, 784) \
+        .reshape(test_length, 28, 28, 1)
+    return train_data, train_labels, test_data, test_labels
 
 # Input:
 # root: str, the directory of mnist
@@ -72,10 +71,7 @@ def load_mnist(root='./mnist'):
 
 # YOUR CODE HERE
 # raise NotImplementedError
-...
 
-
-# End of todo
 def display_image(image, title):
     image = image.squeeze()
     plt.figure()
@@ -85,6 +81,7 @@ def display_image(image, title):
 
 def main():
     X_train, y_train, X_test, y_test = load_mnist()
+    # display_image(X_train[2],y_train[2])
     knn = Knn()
     knn.fit(X_train, y_train)
     y_pred = knn.predict(X_test)

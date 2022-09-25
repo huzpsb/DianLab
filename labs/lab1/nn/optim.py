@@ -1,7 +1,3 @@
-from .tensor import Tensor
-from .modules import Module
-
-
 class Optim(object):
 
     def __init__(self, module, lr):

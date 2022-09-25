@@ -1,7 +1,7 @@
-import random
 import argparse
 import functools
 import inspect
+import random
 import sys
 import time
 
