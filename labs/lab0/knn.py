@@ -12,7 +12,6 @@ class Knn(object):
         self.y = y
 
     def predict(self, X):
-
         # TODO Predict the label of X by
         # the k nearest neighbors.
 

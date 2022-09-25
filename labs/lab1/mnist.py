@@ -5,7 +5,6 @@ from tqdm import tqdm
 import nn
 import nn.functional as F
 
-
 n_features = 28 * 28
 n_classes = 10
 n_epochs = 10
@@ -15,7 +14,6 @@ lengths = (n_features, 512, n_classes)
 
 
 class Model(nn.Module):
-
     # TODO Design the classifier.
 
     ...

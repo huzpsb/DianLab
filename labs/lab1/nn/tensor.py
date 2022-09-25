@@ -3,6 +3,7 @@ import numpy as np
 
 class Tensor(np.ndarray):
     """Derived Class of np.ndarray."""
+
     def __init__(self, *args, **kwargs):
         self.grad = None
 
@@ -45,4 +46,6 @@ def random(shape, loc=0.0, scale=1):
 
 
 if __name__ == '__main__':
-    import pdb; pdb.set_trace()
+    import pdb;
+
+    pdb.set_trace()

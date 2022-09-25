@@ -6,6 +6,7 @@ from . import tensor
 class Module(object):
     """Base class for all neural network modules.
     """
+
     def __init__(self) -> None:
         """If a module behaves different between training and testing,
         its init method should inherit from this one."""
@@ -97,7 +98,7 @@ class Linear(Module):
 
 class BatchNorm1d(Module):
 
-    def __init__(self, length: int, momentum: float=0.9):
+    def __init__(self, length: int, momentum: float = 0.9):
         """Module which applies batch normalization to input.
 
         Args:
@@ -148,8 +149,8 @@ class BatchNorm1d(Module):
 
 class Conv2d(Module):
 
-    def __init__(self, in_channels: int, channels: int, kernel_size: int=3,
-                 stride: int=1, padding: int=0, bias: bool=True):
+    def __init__(self, in_channels: int, channels: int, kernel_size: int = 3,
+                 stride: int = 1, padding: int = 0, bias: bool = True):
         """Module which applies 2D convolution to input.
 
         Args:
@@ -203,7 +204,6 @@ class Conv2d(Module):
 class Conv2d_im2col(Conv2d):
 
     def forward(self, x):
-
         # TODO Implement forward propogation of
         # 2d convolution module using im2col method.
 
@@ -214,8 +214,8 @@ class Conv2d_im2col(Conv2d):
 
 class AvgPool(Module):
 
-    def __init__(self, kernel_size: int=2,
-                 stride: int=2, padding: int=0):
+    def __init__(self, kernel_size: int = 2,
+                 stride: int = 2, padding: int = 0):
         """Module which applies average pooling to input.
 
         Args:
@@ -266,8 +266,8 @@ class AvgPool(Module):
 
 class MaxPool(Module):
 
-    def __init__(self, kernel_size: int=2,
-                 stride: int=2, padding: int=0):
+    def __init__(self, kernel_size: int = 2,
+                 stride: int = 2, padding: int = 0):
         """Module which applies max pooling to input.
 
         Args:
@@ -318,8 +318,7 @@ class MaxPool(Module):
 
 class Dropout(Module):
 
-    def __init__(self, p: float=0.5):
-
+    def __init__(self, p: float = 0.5):
         # TODO Initialize the attributes
         # of dropout module.
 
@@ -328,7 +327,6 @@ class Dropout(Module):
         # End of todo
 
     def forward(self, x):
-
         # TODO Implement forward propogation
         # of dropout module.
 
@@ -337,7 +335,6 @@ class Dropout(Module):
         # End of todo
 
     def backard(self, dy):
-
         # TODO Implement backward propogation
         # of dropout module.
 
@@ -347,4 +344,6 @@ class Dropout(Module):
 
 
 if __name__ == '__main__':
-    import pdb; pdb.set_trace()
+    import pdb;
+
+    pdb.set_trace()

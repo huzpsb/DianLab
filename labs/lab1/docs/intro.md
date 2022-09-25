@@ -4,20 +4,23 @@
 
 - 机器学习简介 [https://www.bilibili.com/video/BV1FT4y1E74V?p=2](https://www.bilibili.com/video/BV1FT4y1E74V?p=2)
 - 线性分类
-   - [https://www.bilibili.com/video/BV1nJ411z7fe?p=6&spm_id_from=333.788.b_6d756c74695f70616765.6](https://www.bilibili.com/video/BV1nJ411z7fe?p=6&spm_id_from=333.788.b_6d756c74695f70616765.6)
-   - [https://cs231n.github.io/linear-classify/](https://cs231n.github.io/linear-classify/)
+    - [https://www.bilibili.com/video/BV1nJ411z7fe?p=6&spm_id_from=333.788.b_6d756c74695f70616765.6](https://www.bilibili.com/video/BV1nJ411z7fe?p=6&spm_id_from=333.788.b_6d756c74695f70616765.6)
+    - [https://cs231n.github.io/linear-classify/](https://cs231n.github.io/linear-classify/)
 - 损失函数与优化
-   - [https://www.bilibili.com/video/BV1nJ411z7fe?p=7&spm_id_from=333.788.b_6d756c74695f70616765.7](https://www.bilibili.com/video/BV1nJ411z7fe?p=7&spm_id_from=333.788.b_6d756c74695f70616765.7)
+    - [https://www.bilibili.com/video/BV1nJ411z7fe?p=7&spm_id_from=333.788.b_6d756c74695f70616765.7](https://www.bilibili.com/video/BV1nJ411z7fe?p=7&spm_id_from=333.788.b_6d756c74695f70616765.7)
 - 反向传播与神经网络
-   - [https://www.bilibili.com/video/BV1nJ411z7fe?p=8&spm_id_from=333.788.b_6d756c74695f70616765.8](https://www.bilibili.com/video/BV1nJ411z7fe?p=8&spm_id_from=333.788.b_6d756c74695f70616765.8)
-   - [https://www.bilibili.com/video/BV1nJ411z7fe?p=9&spm_id_from=333.788.b_6d756c74695f70616765.9](https://www.bilibili.com/video/BV1nJ411z7fe?p=9&spm_id_from=333.788.b_6d756c74695f70616765.9)
-   - [https://cs231n.github.io/neural-networks-1/](https://cs231n.github.io/neural-networks-1/)
-   - [https://cs231n.github.io/neural-networks-2/](https://cs231n.github.io/neural-networks-2/)
+    - [https://www.bilibili.com/video/BV1nJ411z7fe?p=8&spm_id_from=333.788.b_6d756c74695f70616765.8](https://www.bilibili.com/video/BV1nJ411z7fe?p=8&spm_id_from=333.788.b_6d756c74695f70616765.8)
+    - [https://www.bilibili.com/video/BV1nJ411z7fe?p=9&spm_id_from=333.788.b_6d756c74695f70616765.9](https://www.bilibili.com/video/BV1nJ411z7fe?p=9&spm_id_from=333.788.b_6d756c74695f70616765.9)
+    - [https://cs231n.github.io/neural-networks-1/](https://cs231n.github.io/neural-networks-1/)
+    - [https://cs231n.github.io/neural-networks-2/](https://cs231n.github.io/neural-networks-2/)
 
 ## Lab1 Helloworld 讲解
 
-根据上述内容，我们可以总结出神经网络如下的训练流程：通过线性层等 Module 将输入数据 map 到输出数据（class scores in classification），通过 Loss 量化预测结果与真实标签的正确程度，再通过反向传播更新 Module 的参数。
-从自顶向下的角度设计 Module 模块，我们需要 `forward()` 方法对输入数据进行计算并输出传给下一层，也就是进行前向传播；而通过 `backward()` 方法将对 Loss 进行梯度下降优化传入的梯度用以更新当前模块的梯度，同时将梯度回传给前面的模块。
+根据上述内容，我们可以总结出神经网络如下的训练流程：通过线性层等 Module 将输入数据 map 到输出数据（class scores in
+classification），通过 Loss 量化预测结果与真实标签的正确程度，再通过反向传播更新 Module 的参数。
+从自顶向下的角度设计 Module 模块，我们需要 `forward()`
+方法对输入数据进行计算并输出传给下一层，也就是进行前向传播；而通过 `backward()` 方法将对 Loss
+进行梯度下降优化传入的梯度用以更新当前模块的梯度，同时将梯度回传给前面的模块。
 假设当前只有一个 Module，可以大致写出下面这样的伪代码：
 
 ```python
@@ -27,6 +30,7 @@ while training:
     dy = loss(output, target).backward()
     module.backward(dx)
 ```
+
 ​
 于是我们有了 `nn/modules.py` 中的基类设计（本 Lab 中的注释都很重要，请仔细阅读）：
 
@@ -56,6 +60,7 @@ class Module(object):
         """
         return dy
 ```
+
 ​
 以线性层为例，我们若要实现可以写出如下的**伪**代码（并不能跑）：
 

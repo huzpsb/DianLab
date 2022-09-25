@@ -9,7 +9,7 @@
 
 Refer to ***Reference part of [README](../README.md)*** for learning materials.
 
-All the parts that need to be implemented are marked as follows, 
+All the parts that need to be implemented are marked as follows,
 look for all TODO blocks by search "TODO".
 
 ```Python
@@ -22,7 +22,7 @@ look for all TODO blocks by search "TODO".
 
 ### Objectives
 
-Implment the `Linear` Class in `nn/modules.py` with `forward()` and `backward()` methods. 
+Implment the `Linear` Class in `nn/modules.py` with `forward()` and `backward()` methods.
 Then pass the test of `module_test.py`, the usage is as follows:
 
 ```bash
@@ -37,8 +37,9 @@ Linear: forward ................ pass
 ...
 ```
 
-Run `helloworld.py` to perform a simple classification task on binary-class coordinates. 
-Plot the decision boundary of the classifier by `plot_clf.py`. Use `plt.savefig()` if your environment does not support showing images.
+Run `helloworld.py` to perform a simple classification task on binary-class coordinates.
+Plot the decision boundary of the classifier by `plot_clf.py`. Use `plt.savefig()` if your environment does not support
+showing images.
 
 Tips: [Optional] VSCode user can use `# %%` to turn a Python source file into Jupyter Notebook.
 

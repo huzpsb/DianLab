@@ -5,7 +5,6 @@ from .modules import Module
 class Sigmoid(Module):
 
     def forward(self, x):
-
         # TODO Implement forward propogation
         # of sigmoid function.
 
@@ -14,7 +13,6 @@ class Sigmoid(Module):
         # End of todo
 
     def backward(self, dy):
-
         # TODO Implement backward propogation
         # of sigmoid function.
 
@@ -26,7 +24,6 @@ class Sigmoid(Module):
 class Tanh(Module):
 
     def forward(self, x):
-
         # TODO Implement forward propogation
         # of tanh function.
 
@@ -35,7 +32,6 @@ class Tanh(Module):
         # End of todo
 
     def backward(self, dy):
-
         # TODO Implement backward propogation
         # of tanh function.
 
@@ -47,7 +43,6 @@ class Tanh(Module):
 class ReLU(Module):
 
     def forward(self, x):
-
         # TODO Implement forward propogation
         # of ReLU function.
 
@@ -56,7 +51,6 @@ class ReLU(Module):
         # End of todo
 
     def backward(self, dy):
-
         # TODO Implement backward propogation
         # of ReLU function.
 
@@ -68,7 +62,6 @@ class ReLU(Module):
 class Softmax(Module):
 
     def forward(self, x):
-
         # TODO Implement forward propogation
         # of Softmax function.
 
@@ -77,7 +70,6 @@ class Softmax(Module):
         # End of todo
 
     def backward(self, dy):
-
         # Omitted.
         ...
 
@@ -94,6 +86,7 @@ class Loss(object):
         ...     model.backward(loss.backward())
         ...     ...
     """
+
     def __init__(self, n_classes):
         self.n_classes = n_classes
 
@@ -110,7 +103,6 @@ class Loss(object):
 class SoftmaxLoss(Loss):
 
     def __call__(self, probs, targets):
-
         # TODO Calculate softmax loss.
 
         ...
@@ -118,7 +110,6 @@ class SoftmaxLoss(Loss):
         # End of todo
 
     def backward(self):
-
         # TODO Implement backward propogation
         # of softmax loss function.
 
@@ -130,7 +121,6 @@ class SoftmaxLoss(Loss):
 class CrossEntropyLoss(Loss):
 
     def __call__(self, probs, targets):
-
         # TODO Calculate cross-entropy loss.
 
         ...
@@ -138,7 +128,6 @@ class CrossEntropyLoss(Loss):
         # End of todo
 
     def backward(self):
-
         # TODO Implement backward propogation
         # of cross-entropy loss function.
 

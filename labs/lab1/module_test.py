@@ -30,7 +30,7 @@ class TestBase(object):
     def __init__(self, module, input_shape, module_params=None):
         self.module = module.split('.')[-1]
         module_params = module_params.split(',') \
-                        if module_params is not None else []
+            if module_params is not None else []
         input_shape = input_shape.split('x')
         keys = set(module_params + input_shape)
         args = {k: v for k, v in zip(keys, randnint(len(keys)))}
@@ -64,7 +64,7 @@ class TestBase(object):
     def __call__(self):
         def statstr(s):
             return '\033[32mpass\033[0m' if s else \
-                   '\033[31mfail\033[0m'
+                '\033[31mfail\033[0m'
 
         indent = 10
         output = (self.module if len(self.module) < indent - 2 else

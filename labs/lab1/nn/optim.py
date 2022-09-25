@@ -12,7 +12,6 @@ class Optim(object):
         self._step_module(self.module)
 
     def _step_module(self, module):
-
         # TODO Traverse the attributes of `self.module`,
         # if is `Tensor`, call `self._update_weight()`,
         # else if is `Module` or `List` of `Module`,
@@ -28,12 +27,11 @@ class Optim(object):
 
 class SGD(Optim):
 
-    def __init__(self, module, lr, momentum: float=0):
+    def __init__(self, module, lr, momentum: float = 0):
         super(SGD, self).__init__(module, lr)
         self.momentum = momentum
 
     def _update_weight(self, tensor):
-
         # TODO Update the weight of tensor
         # in SGD manner.
 
@@ -55,7 +53,6 @@ class Adam(Optim):
         # End of todo
 
     def _update_weight(self, tensor):
-
         # TODO Update the weight of
         # tensor in Adam manner.
 

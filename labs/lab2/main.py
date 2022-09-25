@@ -8,7 +8,6 @@ from tvid import TvidDataset
 from detector import Detector
 from utils import compute_iou
 
-
 lr = 5e-3
 batch = 32
 epochs = 100
@@ -23,7 +22,6 @@ def train_epoch(model, dataloader, criterion: dict, optimizer,
     bar.set_description(f'epoch {epoch:2}')
     correct, total = 0, 0
     for X, y in bar:
-
         # TODO Implement the train pipeline.
 
         ...
@@ -41,7 +39,6 @@ def test_epoch(model, dataloader, device, epoch):
     with torch.no_grad():
         correct, correct_cls, total = 0, 0, 0
         for X, y in dataloader:
-
             # TODO Implement the test pipeline.
 
             ...

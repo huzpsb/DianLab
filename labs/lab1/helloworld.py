@@ -13,8 +13,8 @@ def gen_data(num):
 
 
 def plot_data(X, y):
-    plt.scatter(X[y==0, 0], X[y==0, 1], color='red')
-    plt.scatter(X[y==1, 0], X[y==1, 1], color='blue')
+    plt.scatter(X[y == 0, 0], X[y == 0, 1], color='red')
+    plt.scatter(X[y == 1, 0], X[y == 1, 1], color='blue')
     plt.show()
 
 
