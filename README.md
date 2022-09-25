@@ -6,4 +6,4 @@ The stuffs used 4 applying the membership of the Dian orgnization.
 * If structure.
 * Convert between types.
 * Creation and iteration of a list.
-* Definition of a function
+* Ways to define a function.
