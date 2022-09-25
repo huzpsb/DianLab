@@ -21,8 +21,13 @@ def gcd(*args):
     return now_gcd
 
 
+def nop(*args):
+    pass
+
+
 print(gcd(114514, 1919810, 1))
 print(gcd(6, 4, 12))
 print(gcd(15, 20))
 print(gcd(666))
 print(gcd())
+nop()
