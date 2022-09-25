@@ -10,4 +10,4 @@ The stuffs used 4 applying the membership of the Dian orgnization.
 * Convert between types.
 * Creation and iteration of a list.
 * Ways to define a function.
-* Partially finished Lab #0.
+* Finished Lab #0.

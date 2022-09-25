@@ -1,6 +1,7 @@
 import gzip
 import os
 import shutil
+import time
 from urllib.request import urlretrieve
 
 import matplotlib.pyplot as plt
@@ -89,16 +90,18 @@ def display_image(image, title):
 
 
 def main():
+    t1 = time.time()
     X_train, y_train, X_test, y_test = load_mnist()
     # display_image(X_train[2], y_train[2])
     knn = Knn()
     knn.fit(X_train, y_train)
-
     correct = 0
     wrong = 0
     #
     for index in range(0, len(y_test)):
+        t = time.time()
         predicted = knn.predict(X_test[index])
+        print('Train :%s ms' % ((time.time() - t) * 1000))
         expected = y_test[index]
         if predicted == expected:
             correct += 1
