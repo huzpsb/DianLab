@@ -1,6 +1,7 @@
 from numpy import tile
 import operator
 
+
 class Knn(object):
 
     def __init__(self, k=3):
@@ -58,7 +59,7 @@ class Knn(object):
             class_count[label] = class_count.get(label, 0) + 1
         # 降序排列
         class_count_list = sorted(class_count.items(), key=operator.itemgetter(1), reverse=True)
-        print('排序后的分类结果：', class_count_list)
+        print('Sorted result:', class_count_list)
         return class_count_list[0][0]
         # raise NotImplementedError
         ...

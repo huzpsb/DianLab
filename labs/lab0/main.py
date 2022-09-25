@@ -47,14 +47,13 @@ def load_mnist(root='./mnist'):
     train_labels = np.fromfile(root + "\\train-labels-idx1-ubyte", dtype=np.uint8, offset=8)
     train_length = len(train_labels)
     train_data = np.fromfile(root + "\\train-images-idx3-ubyte", dtype=np.uint8, offset=16) \
-        .reshape(train_length, 784) \
-        .reshape(train_length, 28, 28, 1)
+        .reshape(train_length, 784)
     test_labels = np.fromfile(root + "\\t10k-labels-idx1-ubyte", dtype=np.uint8, offset=8)
     test_length = len(test_labels)
     test_data = np.fromfile(root + "\\t10k-images-idx3-ubyte", dtype=np.uint8, offset=16) \
-        .reshape(test_length, 784) \
-        .reshape(test_length, 28, 28, 1)
+        .reshape(test_length, 784)
     return train_data, train_labels, test_data, test_labels
+
 
 # Input:
 # root: str, the directory of mnist
@@ -73,7 +72,7 @@ def load_mnist(root='./mnist'):
 # raise NotImplementedError
 
 def display_image(image, title):
-    image = image.squeeze()
+    image = image.reshape(28, 28, 1).squeeze()
     plt.figure()
     plt.title(title)
     plt.imshow(image, cmap=plt.cm.gray_r)
@@ -81,15 +80,30 @@ def display_image(image, title):
 
 def main():
     X_train, y_train, X_test, y_test = load_mnist()
-    # display_image(X_train[2],y_train[2])
+    # display_image(X_train[2], y_train[2])
     knn = Knn()
     knn.fit(X_train, y_train)
-    y_pred = knn.predict(X_test)
-    correct = sum((y_test - y_pred) == 0)
 
-    print('==> correct:', correct)
-    print('==> total:', len(X_test))
-    print('==> acc:', correct / len(X_test))
+    correct = 0
+    wrong = 0
+    #
+    for index in range(0, len(y_test)):
+        predicted = knn.predict(X_test[index])
+        expected = y_test[index]
+        if predicted == expected:
+            correct += 1
+        else:
+            wrong += 1
+        print("predicted: ", predicted, " ,expected: ", expected)
+        print("rate: ", correct / (correct + wrong))
+    #
+
+    #    y_pred = knn.predict(X_test)
+    #    correct = sum((y_test - y_pred) == 0)
+
+    #    print('==> correct:', correct)
+    #    print('==> total:', len(X_test))
+    #    print('==> acc:', correct / len(X_test))
 
     # plot pred samples
     fig, ax = plt.subplots(nrows=4, ncols=5, sharex='all', sharey='all')
