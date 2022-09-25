@@ -45,11 +45,17 @@ def load_mnist(root='./mnist'):
     # 3. Load the MNIST dataset into the
     #    X_train, y_train, X_test, y_test
     #    variables.
-    return np.fromfile(root + "\\train-images-idx3-ubyte", np.array(6e4, 28, 28)), \
-           np.fromfile(root + "\\train-labels-idx1-ubyte", np.array(6e4, )), \
-           np.fromfile(root + "\\t10k-images-idx3-ubyte", np.array(1e4, 28, 28)), \
-           np.fromfile(root + "\\t10k-labels-idx1-ubyte", np.array(1e4, ))
-
+    train_labels = np.fromfile(root + "\\train-labels-idx1-ubyte", dtype=np.uint8, offset=8)
+    train_length = len(train_labels)
+    train_data = np.fromfile(root + "\\train-images-idx3-ubyte", dtype=np.uint8, offset=16) \
+        .reshape(train_length, 784) \
+        .reshape(train_length, 28, 28, 1)
+    test_labels = np.fromfile(root + "\\t10k-labels-idx1-ubyte", dtype=np.uint8, offset=8)
+    test_length = len(train_labels)
+    test_data = np.fromfile(root + "\\t10k-images-idx3-ubyte", dtype=np.uint8, offset=16) \
+        .reshape(train_length, 784) \
+        .reshape(train_length, 28, 28, 1)
+    return test_data, test_labels, test_data, test_labels
 
 # Input:
 # root: str, the directory of mnist
@@ -70,6 +76,11 @@ def load_mnist(root='./mnist'):
 
 
 # End of todo
+def display_image(image, title):
+    image = image.squeeze()
+    plt.figure()
+    plt.title(title)
+    plt.imshow(image, cmap=plt.cm.gray_r)
 
 
 def main():
