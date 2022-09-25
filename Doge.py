@@ -1,10 +1,12 @@
 class Student(object):
+    __slots__ = ('_name', 'score')
+
     def __init__(self, name, score):
-        self.name = name
+        self._name = name
         self.score = score
 
     def print_score(self, period):
-        print('%s在第%s学期的总分是%s.' % (self.name, period, self.score))
+        print('%s在第%s学期的总分是%s.' % (self._name, period, self.score))
 
     def wander(self):
         if self.score < 10:
@@ -18,10 +20,14 @@ class Student(object):
         else:
             self.score = 100
 
+    @property
+    def get_name(self):
+        return self._name
 
-class Gzh(Student):
+
+class Me(Student):
     def print_score(self, period):
-        print('%s在第%s学期的总分是%s.' % (self.name, period, 100))
+        print('%s在第%s学期的总分是%s.' % (self.get_name(), period, 100))
 
 
 xiaoMing = Student("小明", 80)
@@ -36,7 +42,9 @@ xiaoMing.wander()
 xiaoMing.wander()
 xiaoMing.study()
 xiaoMing.print_score("3")
-me = Gzh("gzh", 80)
+# xiaoMing.is_gay = True
+me = Me("qwq", 80)
 me.wander()
 me.wander()
 me.print_score("1")
+me.is_gay = True
