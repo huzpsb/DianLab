@@ -34,6 +34,7 @@ class Knn(object):
 
         # 将输入test_data变成了和train_dataset行列数一样的矩阵
         test_rep_mat = tile(X, (train_dataset_amount, 1))
+        # FIXME !
 
         # tile(mat,(x,y)) Array类 mat 沿着行重复x次，列重复y次
         diff_mat = test_rep_mat - self.X
