@@ -24,10 +24,14 @@ class Student(object):
     def get_name(self):
         return self._name
 
+    def get_name2(self):
+        return self._name
+
 
 class Me(Student):
     def print_score(self, period):
-        print('%s在第%s学期的总分是%s.' % (self.get_name(), period, 100))
+        print('%s在第%s学期的总分是%s.' % (self.get_name, period, 100))
+        print('%s在第%s学期的总分也是%s.' % (self.get_name2(), period, 100))
 
 
 xiaoMing = Student("小明", 80)
