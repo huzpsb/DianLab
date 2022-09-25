@@ -9,6 +9,15 @@ import numpy as np
 from knn import Knn
 
 
+def to_bin(img, threshold):
+    a = img - np.array([[threshold]])
+    b = np.floor(a / np.array([[256]]))
+    c = b + np.array([[1]], dtype=np.int16)
+    bfilter = c.astype('uint8')
+    result = bfilter * np.array([[255]], dtype=np.uint8)
+    return result
+
+
 def load_mnist(root='./mnist'):
     # Load the MNIST dataset
     # 2. Unzip the MNIST dataset into the
@@ -46,12 +55,13 @@ def load_mnist(root='./mnist'):
     #    variables.
     train_labels = np.fromfile(root + "\\train-labels-idx1-ubyte", dtype=np.uint8, offset=8)
     train_length = len(train_labels)
-    train_data = np.fromfile(root + "\\train-images-idx3-ubyte", dtype=np.uint8, offset=16) \
-        .reshape(train_length, 784)
+    train_data = to_bin(np.fromfile(root + "\\train-images-idx3-ubyte", dtype=np.uint8, offset=16) \
+                        .reshape(train_length, 784), 100)
+
     test_labels = np.fromfile(root + "\\t10k-labels-idx1-ubyte", dtype=np.uint8, offset=8)
     test_length = len(test_labels)
-    test_data = np.fromfile(root + "\\t10k-images-idx3-ubyte", dtype=np.uint8, offset=16) \
-        .reshape(test_length, 784)
+    test_data = to_bin(np.fromfile(root + "\\t10k-images-idx3-ubyte", dtype=np.uint8, offset=16) \
+                       .reshape(test_length, 784), 100)
     return train_data, train_labels, test_data, test_labels
 
 
@@ -94,10 +104,12 @@ def main():
             correct += 1
         else:
             wrong += 1
-        print("predicted: ", predicted, " ,expected: ", expected)
-        print("rate: ", correct / (correct + wrong))
+        # print("predicted: ", predicted, " ,expected: ", expected)
+        # print("rate: ", correct / (correct + wrong))
+        if correct % 10 == 0:
+            print("rate: ", correct / (correct + wrong))
     #
-
+    print("final-rate: ", correct / (correct + wrong))
     #    y_pred = knn.predict(X_test)
     #    correct = sum((y_test - y_pred) == 0)
 
@@ -111,7 +123,7 @@ def main():
     ax = ax.flatten()
     for i in range(20):
         img = X_test[i]
-        ax[i].set_title(y_pred[i])
+        ax[i].set_title(knn.predict(X_test[i]))
         ax[i].imshow(img, cmap='Greys', interpolation='nearest')
     ax[0].set_xticks([])
     ax[0].set_yticks([])
