@@ -13,24 +13,35 @@ class Optim(object):
         # else if is `Module` or `List` of `Module`,
         # call `self._step_module()` recursively.
 
-        ...
-
+        if module == 'Tensor':
+            self._update_weight()
+        # elif module == 'Module':
+        #     self._step_module()
+        return
         # End of todo
 
     def _update_weight(self, tensor):
         tensor -= self.lr * tensor.grad
 
 
-class SGD(Optim):
+class SGD():
 
-    def __init__(self, module, lr, momentum: float = 0):
-        super(SGD, self).__init__(module, lr)
+    def __init__(self, target, lr, momentum: float = 0):
+        #super(SGD, self).__init__(module, lr)
+        self.model = target
+        self.lr = lr
         self.momentum = momentum
 
-    def _update_weight(self, tensor):
+    def Up_Wt(self,):
         # TODO Update the weight of tensor
         # in SGD manner.
-
+        self.model.L1 -= self.model.Gr1 * self.lr
+        self.model.L2 -= self.model.Gr2 * self.lr
+        self.model.L3 -= self.model.Gr3 * self.lr
+        self.model.B1 -= self.model.Gb1 * self.lr
+        self.model.B2 -= self.model.Gb2 * self.lr
+        self.model.B3 -= self.model.Gb3 * self.lr
+        return
         ...
 
         # End of todo

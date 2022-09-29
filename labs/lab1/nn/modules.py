@@ -75,7 +75,7 @@ class Linear(Module):
         # TODO Implement forward propogation
         # of linear module.
 
-        ...
+        return np.dot(x,self.w)
 
         # End of todo
 
